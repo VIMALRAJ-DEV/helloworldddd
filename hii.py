@@ -16,14 +16,14 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def get_user_repositories(username, token):
+def get_user_repositories(username):
     url = f'https://api.github.com/users/{username}/repos'
-    headers = {'Authorization': f'token {token}'}
-    response = requests.get(url, headers=headers)
+   
+    response = requests.get(url)
     return response.json()
 
 
-repositories = get_user_repositories('USERNAME', 'token')
+repositories = get_user_repositories('VIMALRAJ-DEV')
 
 df = pd.DataFrame(repositories)
 
@@ -39,11 +39,11 @@ plt.show()
 
 import requests
 
-def get_user_info(username, token):
+def get_user_info(username):
     url = f"https://api.github.com/users/{username}"
-    headers = {"Authorization": f"Bearer {token}"}
     
-    response = requests.get(url, headers=headers)
+    
+    response = requests.get(url)
 
     if response.status_code == 200:
         user_data = response.json()
@@ -55,4 +55,4 @@ def get_user_info(username, token):
         print(f"Error: {response.status_code}")
 
 # Replace with real values
-get_user_info("USERNAME", "tokrn")
+get_user_info("VIMALRAJ-DEV")
